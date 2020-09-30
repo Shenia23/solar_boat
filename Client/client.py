@@ -14,12 +14,8 @@ def main():
 
     client.close()
 
-<<<<<<< HEAD
-print("The server responded: {}".format(data))
-=======
     print('The server responded: {}'.format(data))
 
 
 if __name__ == '__main__':
     main()
->>>>>>> a4b5185c49d32248e9dc762621ea417256cf7343

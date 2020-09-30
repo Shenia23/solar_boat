@@ -22,6 +22,7 @@ def main():
             print('Received data:', data)
             conn.send(MESSAGE)
 
+        print('Connection closed\n')
         conn.close()
 
 if __name__ == '__main__':
