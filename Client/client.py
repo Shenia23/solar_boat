@@ -1,7 +1,7 @@
 import socket
 
-SERVER_IP = '127.0.0.1'
-SERVER_PORT = 12340
+SERVER_IP = 'localhost'
+SERVER_PORT = 12345
 MESSAGE = b'Hello Server!'
 BUFFER_SIZE = 1024
 
@@ -10,18 +10,15 @@ def main():
     client.connect((SERVER_IP,SERVER_PORT))
     print('Sending data: ')
 
-  #while True:
     f = open("myfile.txt", "rb")
     content = f.read(1024)
     
     while content:
-        # Enviar contenido.
         client.send(content)
         content = f.read(1024)
     
     print('File sent')
 
-    #client.send(MESSAGE)
     data = client.recv(BUFFER_SIZE)
 
     client.close()
