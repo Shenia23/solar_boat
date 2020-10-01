@@ -36,6 +36,7 @@ def main():
         print("El archivo se ha recibido correctamente.")
 
         conn.send(b'Fichero recibido')
+
         conn.close()
 
 if __name__ == '__main__':
