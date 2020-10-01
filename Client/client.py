@@ -11,11 +11,11 @@ def main():
     print('Sending data: ')
 
     f = open("myfile.txt", "rb")
-    content = f.read(1024)
+    content = f.read(BUFFER_SIZE)
     
     while content:
         client.send(content)
-        content = f.read(1024)
+        content = f.read(BUFFER_SIZE)
     
     print('File sent')
 

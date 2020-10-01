@@ -1,6 +1,6 @@
 import socket
 
-SERVER_IP = 'localhost'
+SERVER_IP = '192.168.1.98'
 SERVER_PORT = 12345
 MESSAGE = b'Hello Client!'
 BUFFER_SIZE = 1024
