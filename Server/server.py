@@ -8,6 +8,7 @@ BUFFER_SIZE = 1024
 def main():
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server.bind((SERVER_IP, SERVER_PORT))
+    server.setblocking(0)
 
     while True:
         print('Server listening on port {}'.format(SERVER_PORT))
@@ -16,16 +17,14 @@ def main():
         conn, addr = server.accept()
         print('Connection address:', addr)
 
-        conn.setblocking(0)
-
-
         f = open("recibido.txt", "wb")
 
         while (True):
 
     # Recibimos y escribimos en el fichero
             try:
-                input_data = conn.recv(1024)
+                input_data = conn.recv(BUFFER_SIZE)
+                print(input_data)
                 f.write(input_data)
             except BlockingIOError:
                 break
