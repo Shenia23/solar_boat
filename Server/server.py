@@ -17,7 +17,7 @@ def main():
             conn, addr = server.accept()
             print('Connection address:', addr)
 
-            conn.setblocking(0)
+            conn.settimeout(1.0)
 
             f = open("recibido.txt", "wb")
 
@@ -26,7 +26,7 @@ def main():
                     input_data = conn.recv(BUFFER_SIZE)
                     print(input_data)
                     f.write(input_data)
-                except BlockingIOError:
+                except socket.timeout:
                     break
 
             f.close()
