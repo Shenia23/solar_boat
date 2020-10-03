@@ -1,4 +1,5 @@
 import socket
+import time
 
 SERVER_IP = 'localhost'
 SERVER_PORT = 12345
@@ -16,6 +17,10 @@ def main():
 
             conn, addr = server.accept()
             print('Connection address:', addr)
+            
+            start = time.time()
+            data_bits = 0.0
+
 
             conn.settimeout(1.0)
 
@@ -24,14 +29,19 @@ def main():
             while (True):
                 try:
                     input_data = conn.recv(BUFFER_SIZE)
-                    print(input_data)
+                    
+                    data_bits = len(input_data)*8.0
+                    timediff = time.time() - start
+                    bitrate = data_bits/(timediff*1000000)
+                    
+                    print('Bitrate: {:.3f} Mbps'.format(bitrate))
                     f.write(input_data)
                 except socket.timeout:
                     break
 
             f.close()
 
-            print("El archivo se ha recibido correctamente.")
+            print("El archivo se ha recibido correctamente.\n")
 
             conn.send(b'Fichero recibido')
 
