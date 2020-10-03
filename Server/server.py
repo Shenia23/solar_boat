@@ -30,7 +30,7 @@ def main():
                 try:
                     input_data = conn.recv(BUFFER_SIZE)
                     
-                    data_bits = len(input_data)*8.0
+                    data_bits += len(input_data)*8.0
                     timediff = time.time() - start
                     bitrate = data_bits/(timediff*1000000)
                     
