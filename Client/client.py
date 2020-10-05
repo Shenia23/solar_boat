@@ -9,7 +9,7 @@ def main():
     client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     client.connect((SERVER_IP,SERVER_PORT))
     print('Sending data: ')
-
+ 
     f = open("myfile.txt", "rb")
     content = f.read(BUFFER_SIZE)
     
